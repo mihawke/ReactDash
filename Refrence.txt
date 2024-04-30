@@ -1,0 +1,1 @@
+https://demos.pixinvent.com/vuexy-vuejs-admin-template/demo-2/login?to=/apps/email/filter/trashed
