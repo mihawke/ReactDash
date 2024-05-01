@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TopSellingCard = ({ price, productName, rating, imgSrc }) => {
+const DashSellingCard = ({ price, productName, rating, imgSrc }) => {
     return (
         <div className='flex flex-row w-fit gap-x-5'>
             <div className='w-[96px] h-[96px] p-4 bg-[#297FB2] bg-opacity-20 flex place-content-center'>
@@ -15,4 +15,4 @@ const TopSellingCard = ({ price, productName, rating, imgSrc }) => {
     )
 }
 
-export default TopSellingCard
+export default DashSellingCard

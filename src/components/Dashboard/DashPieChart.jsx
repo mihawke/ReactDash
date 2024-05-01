@@ -2,7 +2,7 @@ import React from 'react'
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer, Tooltip, Label } from 'recharts';
 
 
-const AnalyticsChart = () => {
+const DashPieChart = () => {
 
     const data = [
         { name: 'Sales', value: 400 },
@@ -59,4 +59,4 @@ const AnalyticsChart = () => {
     )
 }
 
-export default AnalyticsChart
+export default DashPieChart

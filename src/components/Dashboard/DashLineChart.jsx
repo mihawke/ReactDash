@@ -41,7 +41,7 @@ const CustomDot = (props) => {
     );
 };
 
-const Chart = () => {
+const DashLineChart = () => {
     return (
         <ResponsiveContainer>
             <AreaChart width={'100%'} height={255} data={data} className='bg-white w-full'>
@@ -89,4 +89,4 @@ const Chart = () => {
 }
 
 
-export default Chart;
+export default DashLineChart;

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Order = ({ totalPrice, price, productName, trackingNo, orders, imgSrc }) => {
+const DashOrderCard = ({ totalPrice, price, productName, trackingNo, orders, imgSrc }) => {
     return (
         <div className='flex flex-row items-center justify-between w-full py-[10px] '>
             <p className=' w-20 text-xs text-[#030229] text-opacity-70 font-semibold text-center'>{trackingNo}</p>
@@ -15,4 +15,4 @@ const Order = ({ totalPrice, price, productName, trackingNo, orders, imgSrc }) =
     )
 }
 
-export default Order
+export default DashOrderCard
