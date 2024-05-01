@@ -4,7 +4,7 @@ import { IoNotificationsOutline, IoSettingsOutline } from 'react-icons/io5'
 
 const Header = () => {
     return (
-        <div className='flex flex-row w-full h-[54px] justify-between items-center px-4 border-[1px] rounded-md'>
+        <div className='flex flex-row w-full h-[54px] justify-between items-center px-4 rounded-md bg-white'>
             <div className='flex flex-row'>
                 <div className='flex flex-row'>
                     {/* <div className='w-9 h-9 bg-black'></div> */}
