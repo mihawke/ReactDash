@@ -4,7 +4,7 @@ import Header from '../components/Header'
 import Navbar from '../components/Navbar'
 
 
-const Analytics = () => {
+const Settings = () => {
 
     return (
             <div className='flex flex-col w-full h-full bg-black bg-opacity-5 overflow-y-scroll'>
@@ -18,4 +18,4 @@ const Analytics = () => {
     )
 }
 
-export default Analytics
+export default Settings

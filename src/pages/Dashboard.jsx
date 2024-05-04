@@ -21,18 +21,12 @@ import DashSellingCard from '../components/Dashboard/DashSellingCard'
 const Dashboard = () => {
 
     return (
-        <div className='flex flex-row w-screen h-screen bg-black bg-opacity-5'>
-            <div className='flex'>
-                <Navbar></Navbar>
-            </div>
             <div className='flex flex-col w-full h-full bg-black bg-opacity-5 overflow-y-scroll'>
                 <header className='flex w-full px-6 pt-4 '>
                     <Header></Header>
                 </header>
                 <main className='flex flex-grow p-6 '>
-
                     <div className='flex flex-col flex-grow items-start gap-y-6'>
-
                         <div className='flex flex-row max-w-full w-full gap-x-8 justify-between'>
                             <DashTopCard
                                 icon={<FaHeart className='text-red-600 w-6 h-6' />}
@@ -131,7 +125,6 @@ const Dashboard = () => {
                     </div>
                 </main>
             </div>
-        </div>
     )
 }
 

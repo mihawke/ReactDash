@@ -4,33 +4,38 @@ import { MdAnalytics } from 'react-icons/md'
 import { FaBell, FaCalendarDays, FaTicket } from 'react-icons/fa6'
 import { IoMdSettings } from 'react-icons/io'
 import { BiSolidMessageSquareDetail } from 'react-icons/bi'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { FaUser } from 'react-icons/fa'
 
 const ListItem = ({ itemname, onClick, focused }) => {
 
   const getIcon = () => {
     switch (itemname) {
       case "Dashboard":
-        return <AiFillHome className={`w-6 h-6 ${focused ? 'text-white' : 'text-slate-950 opacity-50'} `} />;
+        return <AiFillHome className={`w-6 h-6 p-0.5 ${focused ? 'text-white' : 'text-slate-950 opacity-50'} `} />;
       case "Analytics":
-        return <MdAnalytics className={`w-6 h-6 ${focused ? 'text-white' : 'text-slate-950 opacity-50'} `} />
+        return <MdAnalytics className={`w-6 h-6 p-0.5 ${focused ? 'text-white' : 'text-slate-950 opacity-50'} `} />
           ;
       case "Invoice":
-        return <FaTicket className={`w-6 h-6 ${focused ? 'text-white' : 'text-slate-950 opacity-50'} `} />
+        return <FaTicket className={`w-6 h-6 p-0.5 ${focused ? 'text-white' : 'text-slate-950 opacity-50'} `} />
           ;
       case "Schedule":
-        return <AiFillSchedule className={`w-6 h-6 ${focused ? 'text-white' : 'text-slate-950 opacity-50'} `} />
+        return <AiFillSchedule className={`w-6 h-6 p-0.5 ${focused ? 'text-white' : 'text-slate-950 opacity-50'} `} />
           ;
       case "Calendar":
-        return <FaCalendarDays className={`w-6 h-6 ${focused ? 'text-white' : 'text-slate-950 opacity-50'} `} />
+        return <FaCalendarDays className={`w-6 h-6 p-0.5 ${focused ? 'text-white' : 'text-slate-950 opacity-50'} `} />
+          ;
+      case "Customer":
+        return <FaUser className={`w-6 h-6 p-0.5 ${focused ? 'text-white' : 'text-slate-950 opacity-50'} `} />
           ;
       case "Messages":
-        return <BiSolidMessageSquareDetail className={`w-6 h-6 ${focused ? 'text-white' : 'text-slate-950 opacity-50'} `} />
+        return <BiSolidMessageSquareDetail className={`w-6 h-6 p-0.5 ${focused ? 'text-white' : 'text-slate-950 opacity-50'} `} />
           ;
       case "Notification":
-        return <FaBell className={`w-6 h-6 ${focused ? 'text-white' : 'text-slate-950 opacity-50'} `} />
+        return <FaBell className={`w-6 h-6 p-0.5 ${focused ? 'text-white' : 'text-slate-950 opacity-50'} `} />
           ;
       case "Settings":
-        return <IoMdSettings className={`w-6 h-6 ${focused ? 'text-white' : 'text-slate-950 opacity-50'} `} />
+        return <IoMdSettings className={`w-6 h-6 p-0.5 ${focused ? 'text-white' : 'text-slate-950 opacity-50'} `} />
           ;
     }
   }
@@ -47,26 +52,56 @@ const ListItem = ({ itemname, onClick, focused }) => {
 
 const Navbar = () => {
 
-  const [focusedItem, setFocusedItem] = useState('Dashboard');
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const getInitialFocusedItem = () => {
+    switch (location.pathname) {
+      case '/dashboard':
+        return 'Dashboard';
+      case '/analytics':
+        return 'Analytics';
+      case '/invoice':
+        return 'Invoice';
+      case '/schedule':
+        return 'Schedule';
+      case '/calendar':
+        return 'Calendar';
+      case '/customer':
+        return 'Customer';
+      case '/messages':
+        return 'Messages';
+      case '/notification':
+        return 'Notification';
+      case '/settings':
+        return 'Settings';
+      default:
+        return 'Dashboard'; // Default to Dashboard if pathname doesn't match any case
+    }
+  };
+
+
+  const [focusedItem, setFocusedItem] = useState(getInitialFocusedItem());
 
   const handleClick = (itemName) => {
     setFocusedItem(itemName);
   };
 
   return (
-    <div className='flex flex-col bg-white'>
+    <div className={`${location.pathname == '/' ? 'hidden' : 'flex'} flex-col bg-white `}>
       <div className='text-2xl  flex justify-center items-center font-bold py-5'>
         React<span className='text-indigo-600'>Dash</span>
       </div>
       <ul className='flex flex-col'>
-        <ListItem itemname={'Dashboard'} onClick={() => handleClick("Dashboard")} focused={focusedItem === "Dashboard"} />
-        <ListItem itemname={'Analytics'} onClick={() => handleClick("Analytics")} focused={focusedItem === "Analytics"} />
-        <ListItem itemname={'Invoice'} onClick={() => handleClick("Invoice")} focused={focusedItem === "Invoice"} />
-        <ListItem itemname={'Schedule'} onClick={() => handleClick("Schedule")} focused={focusedItem === "Schedule"} />
-        <ListItem itemname={'Calendar'} onClick={() => handleClick("Calendar")} focused={focusedItem === "Calendar"} />
-        <ListItem itemname={'Messages'} onClick={() => handleClick("Messages")} focused={focusedItem === "Messages"} />
-        <ListItem itemname={'Notification'} onClick={() => handleClick("Notification")} focused={focusedItem === "Notification"} />
-        <ListItem itemname={'Settings'} onClick={() => handleClick("Settings")} focused={focusedItem === "Settings"} />
+        <ListItem itemname={'Dashboard'} onClick={() => { handleClick("Dashboard"), navigate('/dashboard') }} focused={focusedItem === "Dashboard"} />
+        <ListItem itemname={'Analytics'} onClick={() => { handleClick("Analytics"), navigate('/analytics') }} focused={focusedItem === "Analytics"} />
+        <ListItem itemname={'Invoice'} onClick={() => { handleClick("Invoice"), navigate('/invoice') }} focused={focusedItem === "Invoice"} />
+        <ListItem itemname={'Schedule'} onClick={() => { handleClick("Schedule"), navigate('/schedule')}} focused={focusedItem === "Schedule"} />
+        <ListItem itemname={'Calendar'} onClick={() => { handleClick("Calendar"), navigate('/calendar') }} focused={focusedItem === "Calendar"} />
+        <ListItem itemname={'Customer'} onClick={() => { handleClick("Customer"), navigate('/customer') }} focused={focusedItem === "Customer"} />
+        <ListItem itemname={'Messages'} onClick={() => { handleClick("Messages"), navigate('/messages') }} focused={focusedItem === "Messages"} />
+        <ListItem itemname={'Notification'} onClick={() => { handleClick("Notification"), navigate('/notification') }} focused={focusedItem === "Notification"} />
+        <ListItem itemname={'Settings'} onClick={() => { handleClick("Settings"), navigate('/settings') }} focused={focusedItem === "Settings"} />
       </ul>
     </div>
   )
